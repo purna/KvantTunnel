@@ -1,4 +1,6 @@
-﻿//
+﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
+//
 // Line shader for Tunnel
 //
 // Vertex format:
@@ -36,7 +38,7 @@ Shader "Hidden/Kvant/Tunnel/Line"
         v.vertex.xyz = tex2Dlod(_PositionBuffer, uv).xyz;
 
         v2f o;
-        o.position = mul(UNITY_MATRIX_MVP, v.vertex);
+        o.position = UnityObjectToClipPos(v.vertex);
         UNITY_TRANSFER_FOG(o, o.position);
         return o;
     }
